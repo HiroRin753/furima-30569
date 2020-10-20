@@ -6,8 +6,10 @@
 | nickname   | string    | null: false |
 | email      | string    | null: false |
 | password   | string    | null: false |
-| first-name | text      | null: false |
-| last-name  | text      | null: false |
+| first-name | string      | null: false |
+| last-name  | string      | null: false |
+| furigana(F) | string      | null: false |
+| furigana(L) | string      | null: false |
 | birthday   | date      | null: false |
 
 ### Association
