@@ -24,12 +24,12 @@
 | -----------  | --------- | ----------- |
 | name         | string    | null: false |
 | description  | text      | null:false  | 
-| condition    | integer   | null:false  |
-| category     | integer   | null:false  |
-| shipping cost| integer   | null:false  |
+| condition    | integer_id   | null:false  |
+| category     | integer_id   | null:false  |
+| shipping cost| integer_id   | null:false  |
 | price        | integer   | null:false  |
-| days to ship | integer   | null:false  |
-| ship from    | integer   | null:false  |
+| days to ship | integer_id   | null:false  |
+| ship from    | integer_id   | null:false  |
 | user         | reference | null:false, foreign_key: true|
 
 ### Association
@@ -65,6 +65,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :deal
 
 
 ## deal テーブル
@@ -76,3 +77,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- belongs_to :order
