@@ -32,7 +32,7 @@
 | user             | references | null:false, foreign_key: true|
 
 ### Association
-- belongs_to: user
+- belongs_to :user
 - has_many :comment
 - has_one :purchase
 
@@ -55,7 +55,7 @@
 | item         | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to : user
+- belongs_to :user
 - belongs_to :item
 - has_one :address
 
