@@ -6,8 +6,8 @@
 | nickname   | string    | null: false |
 | email      | string    | null: false |
 | password   | string    | null: false |
-| first-name | string      | null: false |
-| last-name  | string      | null: false |
+| first_name | string      | null: false |
+| last_name  | string      | null: false |
 | first_name_furigana | string      | null: false |
 | last_name_furigana| string      | null: false |
 | birthday   | date      | null: false |
@@ -15,7 +15,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :purchase
+- has_many :purchases
 
 
 ## items テーブル
@@ -25,11 +25,11 @@
 | description      | text      | null:false  | 
 | condition_id     | integer   | null:false  |
 | category_id      | integer   | null:false  |
-| shipping cost_id | integer   | null:false  |
-| days to ship_id  | integer   | null:false  |
-| ship from_id     | integer   | null:false  |
+| shipping_cost_id | integer   | null:false  |
+| days_to_ship_id  | integer   | null:false  |
+| ship_from_id     | integer   | null:false  |
 | price            | integer   | null:false  |
-| user             | reference | null:false, foreign_key: true|
+| user             | references | null:false, foreign_key: true|
 
 ### Association
 - belongs_to: user
@@ -61,16 +61,16 @@
 
 
 
-## addressテーブル
+## addressesテーブル
 | Column         | Type       | Options     |
 |--------------- | ---------  | ----------  |
-| phone number   | integer    | null:false  |
-| postcode       | integer    | null:false  |
-| prefecture     | integer    | null:false  |
+| phone_number   | string     | null:false  |
+| postcode       | string     | null:false  |
+| prefecture_id  | integer    | null:false  |
 | city           | string     | null:false  |
 | banchi         | string     | null:false  |
-| building_name  | string     | null:true   |
-| phone_number   | integer    | null:false  |
+| building_name  | string     | 
+| 
 
 #### Association
 - belongs_to :purchase
