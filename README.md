@@ -70,7 +70,8 @@
 | city           | string     | null:false  |
 | banchi         | string     | null:false  |
 | building_name  | string     | 
-| 
+| purchase       | references |null: false, foreign_key: true|
+
 
 #### Association
 - belongs_to :purchase
