@@ -44,7 +44,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "パスワードは、半角6~12文字半角英数字それぞれ１文字以上含まないと登録できない" do
-        @user.password = 'aaaaaaa'
+        @user.password = 'aaaaaa','000000'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password  Include both letters and numbers")
       end
