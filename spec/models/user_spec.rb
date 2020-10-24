@@ -26,6 +26,11 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
+      it "emailは@を含んでいないと登録できない" do
+        @user.email = "eudiivi21992"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it "重複したemailが存在する場合登録できない" do
         @user.save
         another_user = FactoryBot.build(:user)
@@ -59,6 +64,18 @@ describe User do
         @user.first_name_furigana = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name furigana はカタカナで入力して下さい。","First name furigana はカタカナで入力して下さい。")
+      end
+      it "ユーザー本名は、全角入力でないと登録できない" do 
+        @user.last_name = "ｱｲｳｴｵ"
+        @user.first_name = "ｱｲｳｴｵ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid", "First name is invalid")
+      end
+      it "ユーザー本名のカナは、全角カタカナでないと登録できない" do
+        @user.last_name_furigana = "あいうえお"
+        @user.first_name_furigana = "あいうえお"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name furigana はカタカナで入力して下さい。", "Last name furigana はカタカナで入力して下さい。")
       end
       it "生年月日が空では登録できない" do
         @user.birthday = ""
