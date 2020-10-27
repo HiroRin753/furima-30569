@@ -27,28 +27,43 @@ describe '商品出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
+    it 'conditionが空では出品できない' do
+      @item.condition_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Condition can't be blank")
+    end
     it 'condition_idが--では出品できない' do
-      @item.condition_id(0)
+      @item.condition_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
-    it 'category_idが--では出品できない' do
-      @item.category_id(0)
+    it 'categoryが空では出品できない' do
+      @item.category_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category can't be blank")
+    end
+    it 'categoryが--では出品できない' do
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
-    it 'shipping_cost_idが--では出品できない' do
-      @item.shiping_cost_id(0)
+    it 'shipping_costが空では出品できない' do
+      @item.category_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
+    end
+    it 'shipping_costが--では出品できない' do
+      @item.shiping_cost_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
     it 'days_to_ship_idが--では出品できない' do
-      @item.days_to_ship_id(0)
+      @item.days_to_ship_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
     it 'ship_from_idが--では出品できない' do
-      @item.ship_from_id(0)
+      @item.ship_from_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
@@ -58,17 +73,17 @@ describe '商品出品機能' do
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
     it 'priceは半角数字でなければならない' 
-      @item.price = "９９９９９９"
+      @item.price = '７７７７７'
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Half-width number')
     end
     it 'priceは¥300以上でなければならない' do
-      @item.price = "299"
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Out of setting range')
     end
     it 'priceは¥9,999,999以下でなければならない' do
-      @item.price = "10000000"
+      @item.price = 10000000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Out of setting range')
     end

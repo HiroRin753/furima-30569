@@ -14,10 +14,10 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :image
-    validates :price, format: { with: /\A[0-9]{}+\z/, message: 'Out of setting range'}, 
-                      numericality: { :greater_than_or_equal_to => 300, :less_than_or_equal_to => 9999999 }
+    validates :price, numericality: { only_integer: true, message: 'は半角数字のみで入力してください'}        
     validates :description
-    
+    validates :price, numericality: { :greater_than_or_equal_to => 300, :less_than_or_equal_to => 9999999, message: 'Out of setting range' }
+
     with_options numericality: { other_than: 1 } do
        validates :condition_id
        validates :category_id
