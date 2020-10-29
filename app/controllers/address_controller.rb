@@ -1,2 +1,2 @@
-class DealsController < ApplicationController
+class AddressController < ApplicationController
 end
