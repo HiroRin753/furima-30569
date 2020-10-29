@@ -21,21 +21,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-
-    category = Category.data.detect{|o| o[:id] == @item.category_id}
-    @category = category[:name]
-
-    condition = Condition.data.detect{|o| o[:id] == @item.condition_id}
-    @condition = condition[:name]
-
-    shippingcost = ShippingCost.data.detect{|o| o[:id] == @item.shipping_cost_id}
-    @shippingcost = shippingcost[:name]
-
-    shipfrom = ShipFrom.data.detect{|o| o[:id] == @item.ship_from_id}
-    @shipfrom = shipfrom[:name]
-
-    daystoship = DaysToShip.data.detect{|o| o[:id] == @item.days_to_ship_id}
-    @daystoship = daystoship[:name]
   end
 
   private
