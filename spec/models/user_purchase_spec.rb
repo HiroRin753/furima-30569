@@ -15,7 +15,6 @@ require 'rails_helper'
         @user_purchase.valid?
         expect(@user_purchase.errors.full_messages).to include("Token can't be blank")
       end
-
       it 'postal_codeが空だと保存できないこと' do
         @user_purchase.postal_code = nil
         @user_purchase.valid?
