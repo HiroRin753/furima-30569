@@ -3,10 +3,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
-    if @item.user == current_user
-      redirect_to root_path
-    end
-    if @item.purchase != nil
+    if @item.user == current_user || @item.purchase != nil
       redirect_to root_path
     end
     @user_purchase = UserPurchase.new

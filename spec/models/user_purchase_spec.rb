@@ -3,10 +3,15 @@ require 'rails_helper'
     before do
       @user_purchase = FactoryBot.build(:user_purchase)
     end
-
+   context '購入処理が保存できるとき' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@user_purchase).to be_valid
       end
+      it 'building_nameは空でも保存できること' do
+        @user_purchase.building_name = nil
+        expect(@user_purchase).to be_valid
+      end
+    end
 
    context '購入処理が保存できないとき' do
 
@@ -40,14 +45,20 @@ require 'rails_helper'
         @user_purchase.valid?
         expect(@user_purchase.errors.full_messages).to include("House number can't be blank")
       end
-      it 'building_nameは空でも保存できること' do
-        @user_purchase.building_name = nil
-        expect(@user_purchase).to be_valid
-      end
       it 'phoneが空だと保存できないこと' do
         @user_purchase.phone = nil
         @user_purchase.valid?
         expect(@user_purchase.errors.full_messages).to include("Phone can't be blank")
+      end
+      it 'phoneにハイフンがあると保存できないこと' do
+        @user_purchase.phone = '000-0000-0000'
+        @user_purchase.valid?
+        expect(@user_purchase.errors.full_messages).to include("Phone is not a number")
+      end
+      it 'phoneが11文字より大きいと保存できないこと' do 
+        @user_purchase.phone = '000000000000'
+        @user_purchase.valid?
+        expect(@user_purchase.errors.full_messages).to include()
       end
    end
   end
