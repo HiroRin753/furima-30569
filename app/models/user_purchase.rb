@@ -12,7 +12,7 @@ class UserPurchase
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
   validates :token
  end
-  validates :phone,       length:{ minimum:10, maximum:11}
+  validates :phone,       length:{ maximum:11}
  def save
   purchase = Purchase.create(user_id: user_id, item_id: item_id)
   Address.create(purchase_id: purchase.id, postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, phone: phone)
